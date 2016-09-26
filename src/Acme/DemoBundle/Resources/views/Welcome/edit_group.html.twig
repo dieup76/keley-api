@@ -1,0 +1,50 @@
+{% extends 'AcmeDemoBundle::layout.html.twig' %}
+
+{% block title %}Symfony - Welcome{% endblock %}
+
+{% block content_header '' %}
+
+{% block content %}
+    
+    <h1>Editer un groupe</h1>
+    
+    <form action="#" method="post">
+        <p id="result"></p>
+
+        <div>
+            <label>Nom du groupe</label>
+            <input type="text" id="name" name="name" />
+        </div>
+        <div>
+            <input type="submit" value="Save" />
+        </div>
+
+
+    </form>
+
+    
+    <script src="/js/jq.js"></script>
+    <script>
+        $.ajax({
+            url: '/app_dev.php/groups/{{ app.request.get('id') }}/',
+            success: function(data) {
+                var json = JSON.parse(data);
+                $('#name').val(json.name);
+            }
+        });
+
+    	$('form').on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/app_dev.php/groups/{{ app.request.get('id') }}/',
+                type: 'POST',
+                data: {name: $('#name').val()},
+                success: function(data) {
+                    var json = JSON.parse(data);
+                    $('#result').append('Le groupe '+json.name+' (id: '+json.id+') a été modifié');
+                }
+            })
+        })
+    </script>
+
+{% endblock %}

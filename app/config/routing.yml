@@ -1,0 +1,4 @@
+dieup_blog:
+    resource: "@DieupUsersBundle/Resources/config/routing.yml"
+    prefix:   /
+

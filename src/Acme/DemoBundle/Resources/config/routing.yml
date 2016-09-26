@@ -1,0 +1,17 @@
+_tests:
+    pattern:  /
+    defaults: { _controller: AcmeDemoBundle:Welcome:index }
+
+list_groups:
+    pattern: /tests/groups
+    defaults: { _controller: AcmeDemoBundle:Welcome:groups }
+
+add_group:
+    pattern: /tests/add-group
+    defaults: { _controller: AcmeDemoBundle:Welcome:addGroup }
+
+edit_group:
+    pattern: /tests/group/{id}
+    defaults: { _controller: AcmeDemoBundle:Welcome:editGroup }
+    requirements:
+        id: \d

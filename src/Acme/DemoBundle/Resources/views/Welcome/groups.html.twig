@@ -1,0 +1,30 @@
+{% extends 'AcmeDemoBundle::layout.html.twig' %}
+
+{% block title %}Symfony - Welcome{% endblock %}
+
+{% block content_header '' %}
+
+{% block content %}
+    
+    <h1>Listes des groupes</h1>
+    
+    <ul id="groupsList">
+
+    </ul>
+
+    
+    <script src="/js/jq.js"></script>
+    <script>
+    	$.ajax({
+    		url: '/app_dev.php/groups/',
+    		success: function(data) {
+    			var json = JSON.parse(data);
+	    		for(var key in json) {
+    				$('#groupsList').append('<li><a href="/app_dev.php/tests/group/'+json[key].id+'">'+json[key].name+'</a></li>');
+    			}
+    			
+    		}
+    	})
+    </script>
+
+{% endblock %}

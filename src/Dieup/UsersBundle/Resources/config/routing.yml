@@ -1,0 +1,19 @@
+groups_index:
+    pattern:  /groups/
+    defaults: { _controller: DieupUsersBundle:Groups:index }
+
+groups_view:
+    pattern:  /groups/{id}/
+    defaults: { _controller: DieupUsersBundle:Groups:view }
+    requirements:
+        id: \d
+
+users_index:
+    pattern:  /users/
+    defaults: { _controller: DieupUsersBundle:Users:index }
+
+users_view:
+    pattern:  /users/{id}/
+    defaults: { _controller: DieupUsersBundle:Users:view }
+    requirements:
+        id: \d
